@@ -1,15 +1,22 @@
 # IssueHunter CLI
 
-A CLI tool to find GitHub issues relevant for contribution based on your developer profile.
+![IssueHunter CLI](assets/image.png)
 
-## Features
+A professional CLI tool to find GitHub issues relevant for contribution based on your developer profile.
 
-- 🔍 Search GitHub issues globally across public repositories
-- 🏷️ Filter by labels (bug, enhancement, help wanted, etc.)
-- 💻 Filter by programming language
-- 🤖 Automatically excludes bot-created issues
-- 📊 Multiple output formats (table, list, JSON)
-- ⚡ Preset commands for common searches
+## ✨ Features
+
+- 🔍 **Global Search** - Search GitHub issues across all public repositories
+- 🏷️ **Smart Filtering** - Filter by labels, language, user, repository
+- 🤖 **Bot Filtering** - Automatically excludes bot-created issues
+- 🎨 **Beautiful Output** - Professional tables with color coding
+  - 🟢 Green: Low activity (< 5 comments)
+  - 🟡 Yellow: Medium activity (5-20 comments)
+  - 🔴 Red: High activity (> 20 comments)
+- 🔗 **Clickable URLs** - Click issue titles to open in browser (in supported terminals)
+- 📊 **Multiple Formats** - Table, list, or JSON output
+- 🎯 **User-Specific** - Find issues in your repos, created by you, or involving you
+- ⚡ **Preset Commands** - Quick searches for dev tools, CLI, plugins, .NET, automation
 
 ## Installation
 
@@ -25,20 +32,29 @@ npm install
 # Show help
 node cli.js --help
 
-# Search with default profile settings
-node cli.js search
+# Search issues in your repositories
+node cli.js search --user ruslanlap
+
+# Search issues you created
+node cli.js search --author ruslanlap
+
+# Search issues where you're involved
+node cli.js search --involves ruslanlap
+
+# Search specific repository
+node cli.js search --repo microsoft/PowerToys
 
 # Search with specific language
-node cli.js search --language typescript
+node cli.js search --language typescript --label "help wanted"
 
 # Search with keyword
 node cli.js search --keyword "cli automation"
 
 # Output as JSON
-node cli.js search --format json
+node cli.js search --user ruslanlap --format json
 
-# Show direct URLs
-node cli.js search --urls
+# Output as list
+node cli.js search --user ruslanlap --format list
 ```
 
 ### Preset Commands
@@ -64,12 +80,18 @@ node cli.js automation
 
 | Option | Description |
 |--------|-------------|
+| `--user <user>` | Search issues in this user's repositories |
+| `--repo <owner/repo>` | Search issues in specific repository |
 | `-u, --username <username>` | GitHub username to exclude own repos (default: ruslanlap) |
+| `-a, --author <author>` | Find issues created by this user |
+| `-i, --involves <user>` | Find issues where user is involved |
+| `--mentions <user>` | Find issues that mention this user |
+| `--assignee <user>` | Find issues assigned to this user |
 | `-l, --language <language>` | Filter by programming language |
 | `-k, --keyword <keyword>` | Search keyword |
-| `--labels <labels>` | Comma-separated labels to filter |
+| `--label <label>` | Filter by single label |
 | `-n, --per-page <number>` | Number of results (default: 30) |
-| `-f, --format <format>` | Output format: table, list, json (default: list) |
+| `-f, --format <format>` | Output format: table, list, json (default: table) |
 | `--include-own` | Include issues from your own repositories |
 | `--no-exclude-bots` | Include bot-created issues |
 | `--urls` | Show direct URLs at the end |
@@ -129,4 +151,3 @@ Formatted ASCII table with columns for Repository, Title, Labels, Comments, Upda
 ## License
 
 MIT
-# IssueHunter_CLI
