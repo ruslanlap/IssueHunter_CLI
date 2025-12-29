@@ -1,8 +1,9 @@
 # IssueHunter CLI
+A professional CLI tool to find GitHub issues relevant for contribution based on your developer profile.
 
 ![IssueHunter CLI](assets/image.png)
 
-A professional CLI tool to find GitHub issues relevant for contribution based on your developer profile.
+
 
 ## ✨ Features
 
